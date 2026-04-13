@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <title>豆田丰语官网 - 专业农业服务平台</title>
+  
+  <style>
+    /* 1. 全局：直接显示原图背景 */
+    body {
+      margin: 0;
+      /* 已去掉黑色遮罩，直接显示 url 中的图片 */
+      background: url('https://www.imgur.la/images/2026/03/23/imagecde22ebc536e47b3.png') no-repeat center center fixed;
+      background-size: cover;
+      min-height: 100vh;
+      font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    /* 2. 磨砂玻璃卡片容器 */
+    .company-intro {
+      background: rgba(255, 255, 255, 0.75); /* 稍微调高不透明度，确保在无遮罩背景下文字清晰 */
+      backdrop-filter: blur(20px); 
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: 40px;
+      padding: 60px 40px;
+      width: 100%;
+      max-width: 900px;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+      border: 1px solid rgba(255,255,255,0.4);
+      text-align: center;
+    }
+
+    /* 3. 标题与排版 */
+    .intro-title {
+      font-size: 32px;
+      color: #1a202c;
+      margin-bottom: 0px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      position: relative;
+      display: inline-block;
+    }
+    .intro-title::after {
+      content: "";
+      display: block;
+      width: 40px;
+      height: 4px;
+      background: #48BB78; 
+      margin: 10px auto 0;
+      border-radius: 4px;
+    }
+    .intro-content {
+      font-size: 16px;
+      color: #2D3748;
+      line-height: 1.8;
+      margin-top: 25px;
+      margin-bottom: 40px;
+      max-width: 650px;
+      margin-left: auto;
+      margin-right: auto;
+      font-weight: 500;
+    }
+
+    /* 4. 按钮网格布局 */
+    .intro-buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+
+    /* 5. 白色方块按钮 */
+    .intro-btn {
+      background: #FFFFFF;
+      color: #1a202c;
+      padding: 25px 5px;
+      border-radius: 20px;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    .intro-btn:hover {
+      transform: translateY(-8px);
+      background: #48BB78;
+      color: #FFFFFF;
+      box-shadow: 0 15px 30px rgba(72, 187, 120, 0.2);
+    }
+
+    /* 图标装饰 */
+    .intro-btn::before {
+      font-size: 30px;
+      margin-bottom: 12px;
+    }
+    .intro-btn:nth-child(1)::before { content: "🏢"; }
+    .intro-btn:nth-child(2)::before { content: "🌐"; }
+    .intro-btn:nth-child(3)::before { content: "🛠️"; }
+    .intro-btn:nth-child(4)::before { content: "✉️"; }
+
+    /* 6. 移动端适配 */
+    @media (max-width: 768px) {
+      .company-intro {
+        padding: 40px 15px;
+        border-radius: 30px;
+      }
+      .intro-buttons {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+      .intro-btn { padding: 20px 5px; }
+    }
+  </style>
+</head>
+
+<body>
+  <section class="company-intro">
+    <h2 class="intro-title">关于豆田丰语</h2>
+    
+    <div class="intro-content">
+        豆田丰语致力于为广大农户提供优质的种植方案、农资推荐和技术指导，<br/>
+        助力农业丰产增收，推动乡村振兴发展。
+    </div>
+    
+    <div class="intro-buttons">
+      <a href="a.html" class="intro-btn">公司介绍</a>
+      <a href="b.html" class="intro-btn">产业布局</a>
+      <a href="c.html" class="intro-btn">产品服务</a>
+      <a href="d.html" class="intro-btn">关于我们</a>
+    </div>
+  </section>
+
+  <div id="root"></div>
+
+  <script>
+    (function () {
+      const script = document.createElement('script');
+      script.src = 'https://s3plus.meituan.net/nocode-external/artwork/nocode-runtime.js?v=' + Date.now();
+      script.onload = function() { window.nocode && window.nocode.init('gk1she_719377c'); };
+      document.head.appendChild(script);
+    })();
+  </script>
+</body>
+</html>

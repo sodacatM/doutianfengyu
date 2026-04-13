@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>公司介绍 - 豆田丰语</title>
+  <style>
+    /* 1. 全局背景：使用您的图片 URL */
+    body {
+      margin: 0;
+      background: url('https://www.imgur.la/images/2026/03/23/image9df92aa21d8ec090.png') no-repeat center center fixed;
+      background-size: cover;
+      min-height: 100vh;
+      font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+      display: flex;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    /* 2. 磨砂玻璃主容器 */
+    .content-card {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      border-radius: 35px;
+      padding: 50px;
+      width: 100%;
+      max-width: 1000px;
+      box-shadow: 0 25px 70px rgba(0,0,0,0.15);
+      border: 1px solid rgba(255,255,255,0.5);
+    }
+
+    .back-btn {
+      display: inline-block;
+      text-decoration: none;
+      color: #2F855A;
+      font-weight: bold;
+      margin-bottom: 25px;
+      transition: 0.3s;
+    }
+    .back-btn:hover { transform: translateX(-5px); }
+
+    /* 3. 板块标题样式 */
+    .section-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 30px;
+      border-bottom: 2px solid #E2E8F0;
+      padding-bottom: 10px;
+    }
+    .section-header h2 {
+      font-size: 28px;
+      color: #1a202c;
+      margin: 0;
+    }
+    .section-header .line {
+      width: 50px;
+      height: 5px;
+      background: #48BB78;
+      margin-right: 15px;
+      border-radius: 10px;
+    }
+
+    /* 4. 企业简介 */
+    .company-desc {
+      font-size: 17px;
+      color: #4A5568;
+      line-height: 1.8;
+      margin-bottom: 50px;
+      background: rgba(72, 187, 120, 0.05);
+      padding: 25px;
+      border-radius: 20px;
+      border: 1px dashed #48BB78;
+    }
+
+    /* 5. 团队排版 (文字加强版) */
+    .person-card {
+      background: white;
+      padding: 35px;
+      border-radius: 25px;
+      margin-bottom: 25px;
+      border: 1px solid #EDF2F7;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      transition: 0.3s;
+    }
+    .person-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 25px rgba(72, 187, 120, 0.1);
+      border-color: #48BB78;
+    }
+
+    .person-name {
+      font-size: 24px;
+      font-weight: 800;
+      color: #2D3748;
+      margin-bottom: 5px;
+      display: block;
+    }
+    .person-title {
+      color: #48BB78;
+      font-weight: bold;
+      font-size: 16px;
+      display: block;
+      margin-bottom: 15px;
+    }
+    .person-bio {
+      font-size: 15px;
+      color: #718096;
+      line-height: 1.7;
+      border-top: 1px solid #F7FAFC;
+      padding-top: 15px;
+    }
+    .person-bio strong { color: #4A5568; }
+
+    /* 6. 公司专利与成果 (图片网格修正版) */
+    .honor-list {
+      display: grid;
+      /* PC端：4列 */
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px; /* 增加间距 */
+      margin-top: 20px;
+    }
+
+    /* 统一图片样式 */
+    .honor-img {
+      width: 100%;
+      /* 保持比例，防止图片拉伸 */
+      aspect-ratio: 4 / 3; 
+      object-fit: cover; /* 裁剪适应容器 */
+      border-radius: 15px;
+      border: 2px solid #EDF2F7;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      transition: 0.3s ease;
+      cursor: pointer;
+    }
+
+    .honor-img:hover {
+      transform: scale(1.05);
+      border-color: #48BB78;
+      box-shadow: 0 10px 20px rgba(72, 187, 120, 0.15);
+    }
+
+    /* 移动端适配 */
+    @media (max-width: 768px) {
+      .content-card { padding: 30px 15px; }
+      /* 移动端：2列 */
+      .honor-list { 
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="content-card">
+    <a href="index.html" class="back-btn">← 返回首页</a>
+    
+    <div class="section-header">
+      <div class="line"></div>
+      <h2>企业简介</h2>
+    </div>
+    <div class="company-desc">
+      <p><strong>豆田丰语</strong>是依托食品科学与营养工程、农林经济管理、市场营销等多学科交叉优势，响应国家乡村振兴战略与大健康产业发展号召，倾力打造的一款融合现代生物工程技术、人工智能网络药理学与传统中医药智慧的创新型药食同源健康消费品。本项目旨在通过科技创新重构传统大豆产业链条，解决大豆产业长期存在的附加值低、原料浪费严重、农户增收困难等核心痛点，同时精准切入快速增长的睡眠经济市场，为消费者提供安全、有效、温和的科学助眠解决方案。</p>
+    </div>
+
+    <div class="section-header">
+      <div class="line"></div>
+      <h2>执行团队</h2>
+    </div>
+    <div class="person-card">
+      <span class="person-name">解金泽（负责人）</span>
+      <span class="person-title">中国农业大学 | 2024级 农林经济管理专业</span>
+      <div class="person-bio">
+        作为项目发起人，负责整体战略规划、全产业链社会化服务模式构建及关键资源对接。通过实地调研深度挖掘大豆种植户生产痛点，主导了一站式托管服务逻辑的顶层设计。
+      </div>
+    </div>
+
+    <div class="person-card">
+      <span class="person-name">核心执行团队</span>
+      <span class="person-title">中国农业大学 多学科交叉团队</span>
+      <div class="person-bio">
+        团队由来自中国农业大学农学、经济管理、计算机科学等专业的优秀学子组成。成员分工明确，涵盖了技术研发、实地运营、品牌推广及财务分析等关键职能，共同支撑起大豆全产业链社会化服务的稳健运行。
+      </div>
+    </div>
+
+    <div class="section-header">
+      <div class="line"></div>
+      <h2>指导教师</h2>
+    </div>
+
+    <div class="person-card">
+      <span class="person-name">郭沛</span>
+      <span class="person-title">中国农业大学经济管理学院教授、博士生导师</span>
+      <div class="person-bio">
+        <strong>专业地位：</strong>国家大豆产业技术体系产业经济研究室主任，农业部大豆产业经济研究专家组成员。 <br>
+        <strong>指导贡献：</strong>为项目提供宏观政策分析支持，指导项目在“稳粮增豆”国家战略下精准定位商业模式，确保社会价值与权威性。
+      </div>
+    </div>
+
+    <div class="person-card">
+      <span class="person-name">陶宪盛</span>
+      <span class="person-title">中国农业大学 | 岗位专家</span>
+      <div class="person-bio">
+        <strong>专业领域：</strong>专注于农业机械化发展与农业技术推广研究。<br>
+        <strong>指导贡献：</strong>指导项目“产中”技术模块的落地，特别是在农机配方领航及智能化种植路径优化方面提供核心技术支撑。
+      </div>
+    </div>
+
+    <div class="person-card">
+      <span class="person-name">刘亚楠</span>
+      <span class="person-title">中国农业大学 | 创新创业导师</span>
+      <div class="person-bio">
+        <strong>专业背景：</strong>具有丰富的国家级创新创业竞赛指导经验。<br>
+        <strong>指导贡献：</strong>负责项目商业逻辑链条的梳理与优化，协助团队进行竞赛路演辅导及组织协调，提升项目在专业领域的竞争水平.
+      </div>
+    </div>
+
+    <div class="section-header">
+      <div class="line"></div>
+      <h2>公司专利与成果</h2>
+    </div>
+    
+    <div class="honor-list">
+      <img src= "https://pub-141831e61e69445289222976a15b6fb3.r2.dev/Image_to_url_V2/-----2026-03-23-210203-imagetourl.cloud-1774270933921-32dh1y.png"alt="成果1" class="honor-img">
+      <img src="https://pub-141831e61e69445289222976a15b6fb3.r2.dev/Image_to_url_V2/----_20260323203102_148_884-imagetourl.cloud-1774270391868-544g0k.png" alt="成果2" class="honor-img">
+      <img src="https://pub-141831e61e69445289222976a15b6fb3.r2.dev/Image_to_url_V2/----_20260323203637_157_884-imagetourl.cloud-1774270421329-bmvyy0.png" alt="成果3" class="honor-img">
+      <img src="https://pub-141831e61e69445289222976a15b6fb3.r2.dev/Image_to_url_V2/----_20260323204857_188_884-imagetourl.cloud-1774270418176-kl1c7l.png" alt="成果4" class="honor-img">
+      
+      <img src="https://pub-141831e61e69445289222976a15b6fb3.r2.dev/Image_to_url_V2/----_20260323203640_159_884-imagetourl.cloud-1774270417986-j328po.png" alt="成果5" class="honor-img">
+      <img src="https://pub-141831e61e69445289222976a15b6fb3.r2.dev/Image_to_url_V2/----_20260323203229_149_884-imagetourl.cloud-1774270411873-9w5v5q.png" alt="成果6" class="honor-img">
+      <img src="https://pub-141831e61e69445289222976a15b6fb3.r2.dev/Image_to_url_V2/----_20260323204854_186_884-imagetourl.cloud-1774270411715-6qs2zu.png" alt="成果7" class="honor-img">
+      <img src="https://pub-141831e61e69445289222976a15b6fb3.r2.dev/Image_to_url_V2/----_20260323203641_160_884-imagetourl.cloud-1774270410541-revn4e.png" alt="成果8" class="honor-img">
+      
+      <img src="https://pub-141831e61e69445289222976a15b6fb3.r2.dev/Image_to_url_V2/----_20260323203231_150_884-imagetourl.cloud-1774270405990-79mdyx.png" alt="成果9" class="honor-img">
+      <img src="https://pub-141831e61e69445289222976a15b6fb3.r2.dev/Image_to_url_V2/----_20260323204855_187_884-imagetourl.cloud-1774270406661-jb3op1.png" alt="成果10" class="honor-img">
+      <img src="https://pub-141831e61e69445289222976a15b6fb3.r2.dev/Image_to_url_V2/----_20260323203030_142_884-imagetourl.cloud-1774270390355-4r91ht.png" alt="成果11" class="honor-img">
+      <img src="https://pub-141831e61e69445289222976a15b6fb3.r2.dev/Image_to_url_V2/----_20260323203023_140_884-imagetourl.cloud-1774270390345-c6or3n.png" alt="成果12" class="honor-img">
+
+      <img src="https://pub-141831e61e69445289222976a15b6fb3.r2.dev/Image_to_url_V2/----_20260323203048_145_884-imagetourl.cloud-1774270389525-fptabh.png" alt="成果13" class="honor-img">
+      <img src="https://pub-141831e61e69445289222976a15b6fb3.r2.dev/Image_to_url_V2/----_20260323203048_146_884-imagetourl.cloud-1774270389464-runy7m.png" alt="成果14" class="honor-img">
+      <img src="https://pub-141831e61e69445289222976a15b6fb3.r2.dev/Image_to_url_V2/----_20260323203049_147_884-imagetourl.cloud-1774270389470-1gusdt.png" alt="成果15" class="honor-img">
+      <img src="https://pub-141831e61e69445289222976a15b6fb3.r2.dev/Image_to_url_V2/web-imagetourl.cloud-1774270837043-lyynfm.png" alt="成果16" class="honor-img">
+    </div>
+  </div>
+
+</body>
+</html>

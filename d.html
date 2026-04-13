@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>关于我们 - 豆田丰语</title>
+  <style>
+    /* 1. 基础背景：保持一致 */
+    body {
+      margin: 0;
+      background: url('https://www.imgur.la/images/2026/03/23/image47c6746120470bce.png') no-repeat center center fixed;
+      background-size: cover;
+      min-height: 100vh;
+      font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+      display: flex;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    /* 2. 磨砂玻璃主容器 */
+    .content-card {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      border-radius: 35px;
+      padding: 45px;
+      width: 100%;
+      max-width: 900px;
+      box-shadow: 0 25px 70px rgba(0,0,0,0.15);
+      border: 1px solid rgba(255,255,255,0.5);
+    }
+
+    .back-btn {
+      display: inline-block;
+      text-decoration: none;
+      color: #2F855A;
+      font-weight: bold;
+      margin-bottom: 25px;
+      transition: 0.3s;
+    }
+    .back-btn:hover { transform: translateX(-5px); }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .section-header h1 {
+      font-size: 32px;
+      color: #1a202c;
+      margin: 0 0 10px 0;
+    }
+
+    /* 3. 联系信息网格 */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+      margin-bottom: 40px;
+    }
+
+    .contact-item {
+      background: white;
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      border: 1px solid #EDF2F7;
+      text-align: center;
+    }
+    .contact-item h3 {
+      font-size: 18px;
+      color: #2D3748;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .contact-item p {
+      color: #718096;
+      font-size: 15px;
+      margin: 5px 0;
+    }
+
+    /* 4. 咨询服务引导 */
+    .consult-box {
+      background: rgba(72, 187, 120, 0.08);
+      padding: 30px;
+      border-radius: 25px;
+      border: 1px dashed #48BB78;
+      text-align: center;
+    }
+    .consult-box h2 {
+      color: #2F855A;
+      font-size: 22px;
+      margin-bottom: 15px;
+    }
+    .consult-box p {
+      color: #4A5568;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    /* 按钮样式 */
+    .action-btn {
+      display: inline-block;
+      padding: 12px 35px;
+      background: #48BB78;
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: bold;
+      transition: 0.3s;
+      box-shadow: 0 4px 15px rgba(72, 187, 120, 0.3);
+    }
+    .action-btn:hover {
+      background: #38A169;
+      transform: scale(1.05);
+    }
+
+    /* 5. 愿景寄语 */
+    .vision-footer {
+      margin-top: 40px;
+      text-align: center;
+      border-top: 1px solid #E2E8F0;
+      padding-top: 30px;
+    }
+    .vision-footer blockquote {
+      font-style: italic;
+      color: #4A5568;
+      font-size: 16px;
+      margin: 0;
+    }
+
+    @media (max-width: 768px) {
+      .contact-grid { grid-template-columns: 1fr; }
+      .content-card { padding: 30px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="content-card">
+    <a href="index.html" class="back-btn">← 返回首页</a>
+
+    <div class="section-header">
+      <h1>关于我们</h1>
+      <p>豆田丰语：助力农业丰产增收</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-item">
+        <h3>📍 办公地址</h3>
+        <p>中国农业大学</p>
+        <p>北京市海淀区圆明园西路2号</p>
+      </div>
+      <div class="contact-item">
+        <h3>📞 服务热线</h3>
+        <p>工作日 9:00 - 18:00</p>
+        <p>咨询电话：(131-4124-5005)</p>
+      </div>
+      <div class="contact-item">
+        <h3>📧 电子邮箱</h3>
+        <p>商务合作 / 建议反馈</p>
+        <p>Email: (2656065003@qq.com)</p>
+      </div>
+      <div class="contact-item">
+        <h3>📱 官方社群</h3>
+        <p>获取最新大豆植保技术</p>
+        <p>关注“豆田丰语”官方平台</p>
+      </div>
+    </div>
+
+    <div class="consult-box">
+      <h2>一站式农业咨询服务</h2>
+      <p>
+        无论是选种困惑、植保难题，还是销路对接需求，<br>
+        我们的专家团队与 AI 智能助手都随时为您提供专业指导。
+      </p>
+      <a href="mailto:your-email@example.com" class="action-btn">立即发起咨询</a>
+    </div>
+
+    <div class="vision-footer">
+      <blockquote>
+        “构建大豆全产业链社会化服务新生态，保障国家粮油安全。”
+      </blockquote>
+    </div>
+  </div>
+
+</body>
+</html>

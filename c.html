@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>核心产品 - 豆田丰语</title>
+  <style>
+    /* --- 1. 基础背景 --- */
+    body {
+      margin: 0;
+      background: url('https://www.imgur.la/images/2026/03/23/image313cc3eb617ae888.png') no-repeat center center fixed;
+      background-size: cover;
+      min-height: 100vh;
+      font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+      display: flex;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .content-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: 35px;
+      padding: 40px;
+      width: 100%;
+      max-width: 1200px;
+      box-shadow: 0 25px 70px rgba(0,0,0,0.1);
+    }
+
+    .back-btn {
+      display: inline-block;
+      text-decoration: none;
+      color: #2F855A;
+      font-weight: bold;
+      margin-bottom: 20px;
+      transition: 0.3s;
+    }
+    .back-btn:hover { transform: translateX(-5px); }
+
+    .section-header { text-align: center; margin-bottom: 30px; }
+    .section-header h1 { font-size: 32px; color: #2D3748; display: flex; align-items: center; justify-content: center; gap: 10px; }
+    
+    .green-banner { background: #276749; color: white; padding: 30px; border-radius: 20px; margin-bottom: 50px; text-align: center; }
+    .green-banner h2 { margin: 0 0 10px 0; font-size: 26px; letter-spacing: 2px; }
+    .green-banner p { margin: 0; opacity: 0.9; font-size: 16px; }
+
+    /* --- 2. 产品卡片展示 (找回了特点和场景) --- */
+    .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+    
+    .product-card { 
+      background: white; 
+      border-radius: 25px; 
+      padding: 30px; 
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+      display: flex; 
+      flex-direction: column; 
+      position: relative; 
+      transition: 0.3s; 
+    }
+    .product-card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+
+    .tag { position: absolute; top: 20px; right: 20px; padding: 4px 12px; border-radius: 20px; font-size: 12px; color: white; font-weight: bold; }
+    .tag-hot { background: #E53E3E; }
+    .tag-gift { background: #F56565; }
+
+    .product-img { width: 100%; height: 200px; object-fit: contain; margin-bottom: 20px; }
+
+    .product-info h3 { font-size: 19px; color: #2D3748; margin: 10px 0; }
+    .product-info .spec { color: #A0AEC0; font-size: 14px; margin-bottom: 8px; }
+    .product-info .price { color: #38A169; font-size: 26px; font-weight: bold; margin-bottom: 12px; }
+    .product-info .scene { font-size: 13px; color: #718096; margin-bottom: 15px; line-height: 1.5; }
+    
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 25px 0;
+      font-size: 14px;
+      color: #4A5568;
+      line-height: 2;
+      flex-grow: 1; /* 确保按钮在底部对齐 */
+    }
+    .feature-list li::before { content: "✓ "; color: #38A169; font-weight: bold; }
+
+    .buy-btn { width: 100%; padding: 12px; border: none; border-radius: 12px; color: white; font-weight: bold; cursor: pointer; transition: 0.3s; font-size: 16px; }
+    .btn-green { background: #38A169; }
+    .btn-gold { background: #D69E2E; }
+    .btn-red { background: #E53E3E; }
+
+    /* --- 3. 订单信息弹窗 --- */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    
+    .modal-content {
+      background: white;
+      width: 95%;
+      max-width: 500px;
+      border-radius: 25px;
+      padding: 30px;
+      box-sizing: border-box;
+      max-height: 90vh;
+      overflow-y: auto;
+      animation: slideUp 0.3s ease-out;
+    }
+
+    @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+    .modal-title {
+      color: #1A5336;
+      font-size: 24px;
+      text-align: center;
+      margin-bottom: 25px;
+      font-weight: bold;
+    }
+
+    .form-group { margin-bottom: 15px; text-align: left; }
+    .form-label { display: block; margin-bottom: 6px; font-size: 14px; color: #4A5568; font-weight: 500; }
+    .form-label span { color: #E53E3E; margin-left: 2px; }
+
+    .form-input, .form-select, .form-textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #E2E8F0;
+      border-radius: 10px;
+      font-size: 15px;
+      box-sizing: border-box;
+      outline: none;
+    }
+    .form-textarea { height: 80px; resize: none; }
+
+    .modal-actions { display: flex; gap: 12px; margin-top: 25px; }
+    .modal-btn { flex: 1; padding: 12px; border: none; border-radius: 12px; font-size: 16px; font-weight: bold; cursor: pointer; }
+    .btn-cancel { background: #D1D5DB; color: #374151; }
+    .btn-submit { background: #22C55E; color: white; }
+
+    @media (max-width: 900px) { .product-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <div class="content-card">
+    <a href="index.html" class="back-btn">← 返回首页</a>
+
+    <div class="section-header">
+      <h1>🛒 核心产品 · 科学助眠</h1>
+    </div>
+
+    <div class="green-banner">
+      <h2>无褪黑素 · 无成瘾性 · 健脾又安神</h2>
+      <p>君臣佐使科学配伍 · 8味药食同源原料</p>
+    </div>
+
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="https://pub-141831e61e69445289222976a15b6fb3.r2.dev/Image_to_url_V2/----_20260323212401_869_75-imagetourl.cloud-1774272266884-bgt8c0.png" class="product-img">
+        <div class="product-info">
+          <h3>酸枣仁安睡豆膏 · 便携条装</h3>
+          <p class="spec">10g × 7条/盒</p>
+          <p class="price">¥99</p>
+          <p class="scene"><b>适用场景：</b>出差旅行、办公室午休、初次尝试</p>
+          <ul class="feature-list">
+            <li>独立包装，卫生便携</li>
+            <li>即开即食，无需冲调</li>
+            <li>精准定量，效果可控</li>
+          </ul>
+          <button class="buy-btn btn-green" onclick="openModal('便携条装')">立即购买</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <span class="tag tag-hot">🔥 热销爆款</span>
+        <img src="https://pub-141831e61e69445289222976a15b6fb3.r2.dev/Image_to_url_V2/----_20260323212348_867_75-imagetourl.cloud-1774272266857-brsy53.png" class="product-img">
+        <div class="product-info">
+          <h3>酸枣仁安睡豆膏 · 家庭瓶装</h3>
+          <p class="spec">200g/瓶</p>
+          <p class="price">¥199</p>
+          <p class="scene"><b>适用场景：</b>家庭日常、长期调理、性价比之选</p>
+          <ul class="feature-list">
+            <li>经济实惠，日均成本低</li>
+            <li>密封保鲜，持久服用</li>
+            <li>配赠专用勺，取用方便</li>
+          </ul>
+          <button class="buy-btn btn-gold" onclick="openModal('家庭瓶装')">立即购买</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <span class="tag tag-gift">🎁 送礼首选</span>
+        <img src="https://pub-141831e61e69445289222976a15b6fb3.r2.dev/Image_to_url_V2/----_20260323212356_868_75-imagetourl.cloud-1774272266972-jbh1jf.png" class="product-img">
+        <div class="product-info">
+          <h3>酸枣仁安睡豆膏 · 尊享礼盒</h3>
+          <p class="spec">200g × 2瓶/盒</p>
+          <p class="price">¥368</p>
+          <p class="scene"><b>适用场景：</b>送礼孝敬、商务馈赠、节日福利</p>
+          <ul class="feature-list">
+            <li>高端礼盒设计，彰显品味</li>
+            <li>定制贺卡，传递心意</li>
+            <li>顺丰包邮，送货上门</li>
+          </ul>
+          <button class="buy-btn btn-red" onclick="openModal('尊享礼盒')">立即购买</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="orderModal">
+    <div class="modal-content">
+      <div class="modal-title">填写收货信息</div>
+      <p id="selected-product" style="text-align:center; color:#666; margin-bottom:15px; font-size:14px;"></p>
+      
+      <form id="purchaseForm">
+        <div class="form-group">
+          <label class="form-label">姓名 <span>*</span></label>
+          <input type="text" class="form-input" placeholder="请输入收货人姓名" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">手机号 <span>*</span></label>
+          <input type="tel" class="form-input" placeholder="请输入联系电话" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">收货地址 <span>*</span></label>
+          <textarea class="form-textarea" placeholder="请输入详细的收货地址" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">购买数量 <span>*</span></label>
+          <select class="form-select">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="5">5</option>
+            <option value="10">10</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">备注</label>
+          <textarea class="form-textarea" placeholder="如有特殊要求请在此备注" style="height: 60px;"></textarea>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="modal-btn btn-cancel" onclick="closeModal()">取消</button>
+          <button type="submit" class="modal-btn btn-submit">提交订单</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById('orderModal');
+    const productText = document.getElementById('selected-product');
+
+    function openModal(name) {
+      productText.innerText = "您已选择：" + name;
+      modal.style.display = 'flex';
+    }
+
+    function closeModal() {
+      modal.style.display = 'none';
+    }
+
+    document.getElementById('purchaseForm').onsubmit = function(e) {
+      e.preventDefault();
+      alert('订单提交成功！请等待工作人员核实信息后与您联系。');
+      closeModal();
+    };
+
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        closeModal();
+      }
+    }
+  </script>
+
+</body>
+</html>
