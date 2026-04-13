@@ -1,166 +1,520 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>核心产品 - 豆田丰语</title>
-
   <style>
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
-      display: flex;
-      justify-content: center;
-      padding: 40px 20px;
-      position: relative;
-      overflow-x: hidden;
+    * {
+      box-sizing: border-box;
     }
 
-    /* ✅ 背景层（关键） */
-    .bg {
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+    }
+
+    body {
+      position: relative;
+      min-height: 100vh;
+      overflow-x: hidden;
+      background: #0b3b38;
+      padding: 0;
+    }
+
+    /* 背景图 */
+    body::before {
+      content: "";
       position: fixed;
       inset: 0;
-      background: url('d.jpg') no-repeat center center;
+      background: url("d.jpg") no-repeat center center;
       background-size: cover;
       z-index: -2;
     }
 
-    /* 遮罩 */
-    .bg::after {
+    /* 轻微遮罩，保证内容清楚 */
+    body::after {
       content: "";
-      position: absolute;
+      position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.25);
+      background: rgba(0, 0, 0, 0.12);
+      z-index: -1;
     }
 
-    .content-card {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(20px);
-      border-radius: 35px;
-      padding: 40px;
+    .page-wrap {
       width: 100%;
-      max-width: 1200px;
-      box-shadow: 0 25px 70px rgba(0,0,0,0.15);
-      position: relative;
-      z-index: 1;
+      max-width: 1180px;
+      margin: 4px auto 28px;
+      background: rgba(245, 245, 245, 0.96);
+      border-radius: 34px;
+      padding: 24px 34px 34px;
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.10);
     }
 
     .back-btn {
-      text-decoration: none;
-      color: #2F855A;
-      font-weight: bold;
       display: inline-block;
-      margin-bottom: 20px;
+      text-decoration: none;
+      color: #2f855a;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 24px;
     }
 
-    .section-header {
+    .header {
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 26px;
     }
 
-    .section-header h1 {
-      font-size: 32px;
-      color: #2D3748;
+    .header h1 {
+      margin: 0;
+      color: #2d3748;
+      font-size: 34px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
     }
 
-    .green-banner {
-      background: #276749;
-      color: white;
-      padding: 30px;
-      border-radius: 20px;
-      margin-bottom: 50px;
+    .banner {
+      width: 100%;
+      background: #2f7a52;
+      border-radius: 24px;
+      padding: 28px 20px 24px;
       text-align: center;
+      color: #ffffff;
+      margin-bottom: 44px;
+    }
+
+    .banner h2 {
+      margin: 0 0 10px 0;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    .banner p {
+      margin: 0;
+      font-size: 15px;
+      opacity: 0.95;
+      font-weight: 500;
     }
 
     .product-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
+      gap: 26px;
     }
 
     .product-card {
-      background: white;
-      border-radius: 25px;
-      padding: 30px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      position: relative;
+      background: #ffffff;
+      border-radius: 26px;
+      padding: 24px 24px 26px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
       display: flex;
       flex-direction: column;
+      min-height: 690px;
     }
 
-    .product-img {
+    .product-tag {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      color: #ffffff;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .tag-hot {
+      background: #f25656;
+    }
+
+    .tag-gift {
+      background: #ff7a7a;
+    }
+
+    .product-image-wrap {
       width: 100%;
-      height: 200px;
+      height: 210px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 6px;
+      margin-bottom: 22px;
+    }
+
+    .product-image {
+      max-width: 100%;
+      max-height: 100%;
       object-fit: contain;
-      margin-bottom: 20px;
+      display: block;
     }
 
-    .product-info h3 {
-      font-size: 18px;
-      color: #2D3748;
+    .product-title {
+      margin: 0 0 10px 0;
+      color: #2d3748;
+      font-size: 20px;
+      font-weight: 800;
+      line-height: 1.45;
     }
 
-    .price {
-      color: #38A169;
+    .product-spec {
+      margin: 0 0 18px 0;
+      color: #a0aec0;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .product-price {
+      margin: 0 0 12px 0;
+      color: #38a169;
+      font-size: 26px;
+      font-weight: 800;
+    }
+
+    .product-scene {
+      margin: 0 0 14px 0;
+      color: #718096;
+      font-size: 14px;
+      line-height: 1.75;
+      font-weight: 500;
+    }
+
+    .scene-label {
+      font-weight: 700;
+      color: #5f6b7a;
+    }
+
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 24px 0;
+      color: #4a5568;
+      font-size: 14px;
+      line-height: 2;
+      flex: 1;
+    }
+
+    .feature-list li {
+      position: relative;
+      padding-left: 18px;
+    }
+
+    .feature-list li::before {
+      content: "√";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #38a169;
+      font-weight: 800;
+    }
+
+    .buy-btn {
+      display: block;
+      width: 100%;
+      border: none;
+      border-radius: 14px;
+      padding: 14px 0;
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .btn-green {
+      background: #3cab69;
+    }
+
+    .btn-gold {
+      background: #d89e28;
+    }
+
+    .btn-red {
+      background: #ef3e3e;
+    }
+
+    .buy-btn:hover {
+      opacity: 0.94;
+    }
+
+    /* 弹窗 */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.58);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+
+    .modal-content {
+      width: 100%;
+      max-width: 500px;
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.18);
+    }
+
+    .modal-title {
+      text-align: center;
+      margin: 0 0 12px 0;
       font-size: 24px;
-      font-weight: bold;
+      color: #1a5336;
+      font-weight: 800;
     }
 
-    @media (max-width: 900px) {
+    .selected-product {
+      text-align: center;
+      color: #718096;
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 6px;
+      color: #4a5568;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .required {
+      color: #e53e3e;
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      width: 100%;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 11px 12px;
+      font-size: 15px;
+      outline: none;
+    }
+
+    .form-textarea {
+      resize: none;
+      min-height: 82px;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .modal-btn {
+      flex: 1;
+      border: none;
+      border-radius: 12px;
+      padding: 12px 0;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .btn-cancel {
+      background: #d1d5db;
+      color: #374151;
+    }
+
+    .btn-submit {
+      background: #22c55e;
+      color: #ffffff;
+    }
+
+    @media (max-width: 1024px) {
+      .page-wrap {
+        margin: 12px 16px 24px;
+        padding: 22px 20px 26px;
+      }
+
       .product-grid {
         grid-template-columns: 1fr;
+      }
+
+      .product-card {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .header h1 {
+        font-size: 28px;
+      }
+
+      .banner h2 {
+        font-size: 23px;
+      }
+
+      .page-wrap {
+        border-radius: 24px;
+      }
+
+      .product-card {
+        border-radius: 22px;
+        padding: 20px 18px 22px;
       }
     }
   </style>
 </head>
-
 <body>
 
-  <!-- 背景层 -->
-  <div class="bg"></div>
-
-  <!-- 内容 -->
-  <div class="content-card">
+  <div class="page-wrap">
     <a href="index.html" class="back-btn">← 返回首页</a>
 
-    <div class="section-header">
-      <h1>核心产品</h1>
+    <div class="header">
+      <h1>🛒 核心产品 · 科学助眠</h1>
     </div>
 
-    <div class="green-banner">
-      <h2>无褪黑素 · 无成瘾性</h2>
-      <p>科学助眠解决方案</p>
+    <div class="banner">
+      <h2>无褪黑素 · 无成瘾性 · 健脾又安神</h2>
+      <p>君臣佐使科学配伍 · 8味药食同源原料</p>
     </div>
 
     <div class="product-grid">
       <div class="product-card">
-        <img src="d1.jpg" class="product-img">
-        <div class="product-info">
-          <h3>便携条装</h3>
-          <p class="price">¥99</p>
+        <div class="product-image-wrap">
+          <img src="d1.jpg" alt="便携条装" class="product-image" />
         </div>
+        <h3 class="product-title">酸枣仁安睡豆膏 · 便携条装</h3>
+        <p class="product-spec">10g × 7条/盒</p>
+        <p class="product-price">¥99</p>
+        <p class="product-scene">
+          <span class="scene-label">适用场景：</span>出差旅行、办公室午休、初次尝试
+        </p>
+        <ul class="feature-list">
+          <li>独立包装，卫生便携</li>
+          <li>即开即食，无需冲调</li>
+          <li>精准定量，效果可控</li>
+        </ul>
+        <button class="buy-btn btn-green" onclick="openModal('酸枣仁安睡豆膏 · 便携条装')">立即购买</button>
       </div>
 
       <div class="product-card">
-        <img src="d2.jpg" class="product-img">
-        <div class="product-info">
-          <h3>家庭瓶装</h3>
-          <p class="price">¥199</p>
+        <span class="product-tag tag-hot">🔥 热销爆款</span>
+        <div class="product-image-wrap">
+          <img src="d2.jpg" alt="家庭瓶装" class="product-image" />
         </div>
+        <h3 class="product-title">酸枣仁安睡豆膏 · 家庭瓶装</h3>
+        <p class="product-spec">200g/瓶</p>
+        <p class="product-price">¥199</p>
+        <p class="product-scene">
+          <span class="scene-label">适用场景：</span>家庭日常、长期调理、性价比之选
+        </p>
+        <ul class="feature-list">
+          <li>经济实惠，日均成本低</li>
+          <li>密封保鲜，持久服用</li>
+          <li>配赠专用勺，取用方便</li>
+        </ul>
+        <button class="buy-btn btn-gold" onclick="openModal('酸枣仁安睡豆膏 · 家庭瓶装')">立即购买</button>
       </div>
 
       <div class="product-card">
-        <img src="d3.jpg" class="product-img">
-        <div class="product-info">
-          <h3>礼盒装</h3>
-          <p class="price">¥368</p>
+        <span class="product-tag tag-gift">🎁 送礼首选</span>
+        <div class="product-image-wrap">
+          <img src="d3.jpg" alt="尊享礼盒" class="product-image" />
         </div>
+        <h3 class="product-title">酸枣仁安睡豆膏 · 尊享礼盒</h3>
+        <p class="product-spec">200g × 2瓶/盒</p>
+        <p class="product-price">¥368</p>
+        <p class="product-scene">
+          <span class="scene-label">适用场景：</span>送礼孝敬、商务馈赠、节日福利
+        </p>
+        <ul class="feature-list">
+          <li>高端礼盒设计，彰显品味</li>
+          <li>定制贺卡，传递心意</li>
+          <li>顺丰包邮，送货上门</li>
+        </ul>
+        <button class="buy-btn btn-red" onclick="openModal('酸枣仁安睡豆膏 · 尊享礼盒')">立即购买</button>
       </div>
     </div>
-
   </div>
 
+  <div class="modal-overlay" id="orderModal">
+    <div class="modal-content">
+      <h2 class="modal-title">填写收货信息</h2>
+      <div class="selected-product" id="selectedProduct"></div>
+
+      <form id="purchaseForm">
+        <div class="form-group">
+          <label class="form-label">姓名 <span class="required">*</span></label>
+          <input type="text" class="form-input" placeholder="请输入收货人姓名" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">手机号 <span class="required">*</span></label>
+          <input type="tel" class="form-input" placeholder="请输入联系电话" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">收货地址 <span class="required">*</span></label>
+          <textarea class="form-textarea" placeholder="请输入详细的收货地址" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">购买数量 <span class="required">*</span></label>
+          <select class="form-select">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="5">5</option>
+            <option value="10">10</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">备注</label>
+          <textarea class="form-textarea" style="min-height:60px;" placeholder="如有特殊要求请在此备注"></textarea>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="modal-btn btn-cancel" onclick="closeModal()">取消</button>
+          <button type="submit" class="modal-btn btn-submit">提交订单</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById("orderModal");
+    const selectedProduct = document.getElementById("selectedProduct");
+
+    function openModal(name) {
+      selectedProduct.textContent = "您已选择：" + name;
+      modal.style.display = "flex";
+    }
+
+    function closeModal() {
+      modal.style.display = "none";
+    }
+
+    document.getElementById("purchaseForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      alert("订单提交成功！请等待工作人员核实信息后与您联系。");
+      closeModal();
+    });
+
+    window.addEventListener("click", function (e) {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+  </script>
 </body>
 </html>
